@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-payment-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-payment-app
+  template:
+    metadata:
+      labels:
+        app: demo-payment-app
+    spec:
+      containers:
+        - name: demo-payment-app
+          image: rhs95/demo-payment-app
+          command: ["node"]
+          args: ["app/index.js"]
+          ports:
+            - containerPort: 3000 
